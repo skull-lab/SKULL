@@ -69,8 +69,26 @@ async def start(update: Update, context: CallbackContext) -> None:
          InlineKeyboardButton("🎨 Generate", callback_data="generate")],
         [InlineKeyboardButton("📊 Stats", callback_data="stats"),
          InlineKeyboardButton("💾 Saved Prompts", callback_data="saved_prompts")]
+        [InlineKeyboardButton("ℹ️ About", callback_data="about")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
+
+
+async def handle_menu(update: Update, context: CallbackContext) -> None:
+    """Handle menu button clicks."""
+    query = update.callback_query
+    await query.answer()  # Acknowledge the callback query
+
+    if query.data == "help":
+        await help_command(query, context)
+    elif query.data == "generate":
+        await generate_command(query, context)
+    elif query.data == "stats":
+        await stats(query, context)
+    elif query.data == "saved prompts":
+        await get_promptss(query, context)
+    elif query.data == "about":
+        await about_command(query, context)    
 
     await update.message.reply_text(
         "✨ *Welcome to the AI Image Bot!* ✨\n\n"
