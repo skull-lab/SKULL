@@ -20,7 +20,7 @@ import httpx  # Asynchronous HTTP requests
 import logging
 
 # Load environment variables
-load_dotenv("token.env")
+load_dotenv(".env")
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 HF_TOKEN = os.getenv("HF_API_KEY")
 LORAS = os.getenv("LORAS", "").split(",")  # List of LoRAs
