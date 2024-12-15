@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ai-image-bot
+    env: python
+    buildCommand: ""
+    startCommand: python main.py
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        value: <your_telegram_bot_token>
+      - key: HF_API_KEY
+        value: <your_huggingface_api_key>
+      - key: PORT
+        value: 5000
